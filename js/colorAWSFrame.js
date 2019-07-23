@@ -55,7 +55,12 @@ String.prototype.toRGBCode = (function () {
   'use strict';
 
   var account = document.querySelector("#nav-usernameMenu .nav-elt-label").textContent;
-  var background = account.toRGBCode();
+  var background;
+  if (/opsworks-prod/.test(account)) {
+    background = '#d01246';
+  } else {
+    background = account.toRGBCode();
+  }
 
   var selectors = ["#nav-menubar", "#nav-menu-right", "#console-nav-footer"];
   selectors.forEach(function(s) {
